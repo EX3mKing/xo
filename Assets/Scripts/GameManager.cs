@@ -2,11 +2,13 @@ using System;
 using Unity.Netcode;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private GameObject p_board;
 
+    public NetworkVariable<int> isHostsTurn = new NetworkVariable<int>(0);
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
